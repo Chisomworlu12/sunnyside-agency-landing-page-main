@@ -1,18 +1,24 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap");
 
 @theme {
   --color-yellow-5: hsl(51, 100%, 49%);
   --color-grey-55: hsl(232, 10%, 55%);
+  --color-grey-40: hsl(210, 4%, 67%);
+  --color-grey-60: hsl(213, 9%, 39%);
   --color-grey-950: hsl(212, 27%, 19%);
   --color-subtle-light: #f5f5f4;
+  --color-green: hsl(167, 40%, 24%);
+  --color-green-5: hsl(167, 34%, 41%);
+  --color-blue: hsl(198, 62%, 26%);
 }
-
-body {
-  font-size: 18px;
+@media (prefers-color-scheme: dark) {
+  .dark {
+    color-scheme: dark;
+  }
 }
-
 .barlow-semibold {
   font-family: "Barlow", sans-serif;
   font-weight: 600;
