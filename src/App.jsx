@@ -13,7 +13,7 @@ function App() {
   return (
  <div className='flex flex-col text-[18px]'>
     <div  className="h-screen bg-[url('/images/mobile/image-header.jpg')] bg-center bg-no-repeat bg-cover md:bg-[url('/images/desktop/image-header.jpg')] lg:bg-no-repeat lg:bg-cover ">
-    <div className=' lg:px-12 lg:py-10 p-12'>
+    <div className=' lg:px-12 lg:py-10 py-12 px-0'>
       
       <Header/>
         <Hero/>
