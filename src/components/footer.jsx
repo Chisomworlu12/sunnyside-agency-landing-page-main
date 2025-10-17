@@ -24,7 +24,7 @@ function Footer(){
         <Logo className="fill-green dark:fill-white" />
         <div className='flex gap-x-6 text-green barlow-semibold '>
             <Button className="hover:text-white cursor-pointer dark:text-white">About</Button>
-            <Button className="hover:text-white cursor-pointer dark:text-white">Serives</Button>
+            <Button className="hover:text-white cursor-pointer dark:text-white">Services</Button>
             <Button className="hover:text-white cursor-pointer dark:text-white">Projects</Button>
             
         </div>
