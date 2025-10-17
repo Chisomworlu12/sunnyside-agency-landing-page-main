@@ -56,7 +56,7 @@ function NavbarMobile({isOpen}) {
 
     return(
         <>
-      <ul className={"lg:hidden flex flex-col gap-y-10  center items-center py-10 bg-white dark:bg-black w-[85%] absolute z-20 top-30 inset-x-0 mx-auto   barlow-semibold transition-transform duration-500 " + (!isOpen &&' hidden') }>
+      <ul className={"lg:hidden flex flex-col gap-y-10  center items-center py-10 bg-white dark:bg-black w-[80%] absolute z-20 top-30 inset-x-0 mx-auto   barlow-semibold transition-transform duration-500 " + (!isOpen &&' hidden') }>
         
             <svg xmlns="http://www.w3.org/2000/svg" className="absolute -right-8.5 -top-11  overflow-hidden text-white dark:text-black" width="90" height="90" viewBox="0 0 16 16"><path fill="currentColor" d="M9.573 4.427L6.177 7.823a.25.25 0 0 0 0 .354l3.396 3.396a.25.25 0 0 0 .427-.177V4.604a.25.25 0 0 0-.427-.177"/></svg>
      
