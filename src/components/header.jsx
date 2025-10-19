@@ -1,8 +1,32 @@
-import { useState } from "react";
-import DarkModeToggle from "./darkmode";
+import { useEffect, useState } from "react";
+
 
 
 function Header (){
+
+   const [theme, setTheme] = useState('light');  
+    
+    useEffect(() => { 
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+        applyTheme(savedTheme);
+    }, []);
+    
+    const applyTheme = (newTheme) => {  
+        if (newTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    };
+    
+     function toggleTheme() {
+        const nextTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(nextTheme);
+        localStorage.setItem('theme', nextTheme);
+        applyTheme(nextTheme);
+    }
+   
 const [isOpen, setIsOpen] = useState(false);
     function toggleMenu() {
         setIsOpen(!isOpen);
@@ -11,12 +35,12 @@ const [isOpen, setIsOpen] = useState(false);
         <div>
         <div className="flex justify-between items-center duration-500">
             <Logo  className="fill-white dark:fill-gray-950"/>
-            <NavbarDesktop/>
+            <NavbarDesktop ><DarkModeToggle theme={theme} toggleTheme={toggleTheme} /></NavbarDesktop>
             <MenuIcon onToggleMenu ={toggleMenu}  />
            
             </div>
-            <NavbarMobile isOpen={isOpen}/>
-             <DarkModeToggle/>
+            <NavbarMobile isOpen={isOpen} > <DarkModeToggle theme={theme} toggleTheme={toggleTheme} /></NavbarMobile>
+          
            </div>
     )
 }
@@ -27,13 +51,15 @@ return(
 )
 }
 
-function NavbarDesktop (){
+function NavbarDesktop ({children}){
+
     return(
              <ul className="lg:flex gap-x-10 barlow-semibold duration-500 hidden">
                     <Button className="text-white cursor-pointer dark:text-gray-950"> About</Button>
                     <Button className="text-white cursor-pointer dark:text-gray-950">Services</Button>
                     <Button className="text-white cursor-pointer dark:text-gray-950">Projects</Button>
                     <Button className="text-black dark:text-white fraunces-700  bg-white dark:bg-gray-950 px-5 py-2 rounded-full hover:text-white dark:hover:text-black hover:bg-white/30 dark:dark:hover:bg-gray-950/30 cursor-pointer">Contact</Button>
+                    {children}
                 </ul>
             
        
@@ -51,7 +77,7 @@ function MenuIcon({onToggleMenu }){
     )
 }
 
-function NavbarMobile({isOpen}) {
+function NavbarMobile({isOpen, children}) {
     
 
     return(
@@ -65,10 +91,22 @@ function NavbarMobile({isOpen}) {
            <Button className="text-grey-55 dark:text-white">Services</Button>
            <Button className="text-grey-55 dark:text-white">Projects</Button>
            <div><Button className="text-black dark:bg-white bg-yellow-5 fraunces-700 px-4 py-2 rounded-full ">CONTACT</Button></div>
+            {children}
         </ul>
         </>
     )
     
+}
+function DarkModeToggle({ theme, toggleTheme }) {
+  return (
+    <button
+      onClick={toggleTheme}
+      className="p-1 md:p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+      title={`Current: ${theme} mode`}
+    >
+      {theme === 'light' ? '☀️' : '🌙'}
+    </button>
+  );
 }
 
 export function Button ({children, className}){
